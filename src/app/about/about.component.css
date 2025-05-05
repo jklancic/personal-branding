@@ -30,6 +30,41 @@
   margin-bottom: 10px;
 }
 
+.card {
+  position: relative; /* Add position relative for pseudo-element */
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* Ensure pseudo-element stays within card bounds */
+}
+
+/* Add this new pseudo-element for the top border effect - with fade in/out */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--primary); /* Use your primary color for consistency */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+}
+
+/* Show the top border on hover */
+.card:hover::before {
+  opacity: 1; /* Show the border on hover */
+}
+
+/* Add a hover effect to the card */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
 .card h3 {
   margin-top: 0;
   color: var(--secondary);
@@ -45,6 +80,33 @@
   padding: 30px;
   margin-top: 30px;
   text-align: center;
+  position: relative; /* Add position relative for pseudo-element */
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* Ensure pseudo-element stays within card bounds */
+}
+
+/* Add the same fade-in effect to the LinkedIn card */
+.linkedin-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #0077b5; /* LinkedIn blue color */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+}
+
+/* Show the top border on hover */
+.linkedin-card:hover::before {
+  opacity: 1; /* Show the border on hover */
+}
+
+/* Add a hover effect to the LinkedIn card */
+.linkedin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 .linkedin-card a {
@@ -64,5 +126,9 @@
 
   .experience-company {
     font-size: 1rem;
+  }
+
+  .card, .linkedin-card {
+    padding: 20px;
   }
 }

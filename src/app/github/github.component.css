@@ -41,158 +41,135 @@ h2 {
   text-decoration: underline;
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 0;
-}
-
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left: 4px solid var(--primary);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.error-container, .no-repos {
-  text-align: center;
-  padding: 40px;
-  margin: 20px 0;
-}
-
-.error-container i, .no-repos i {
-  font-size: 2.5rem;
-  color: #e74c3c;
-  margin-bottom: 20px;
-}
-
-.no-repos i {
-  color: var(--secondary);
-}
-
+/* Repository Grid Layout */
 .repo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 15px;
 }
 
+/* Repository Card */
 .repo-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  border: none;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #eee;
 }
 
 .repo-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.repo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #6366f1; /* Match the blue color of repo name icons */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+}
+
+/* Show the top border on hover */
+.repo-card:hover::before {
+  opacity: 1; /* Show the border on hover */
+}
+
+/* Repository Header */
 .repo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 15px;
+  padding: 16px;
+  padding-bottom: 0;
 }
 
 .repo-name {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
   margin: 0;
-  font-size: 1.25rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
 }
 
 .repo-name i {
-  color: var(--primary);
+  color: #6366f1;
   margin-right: 8px;
 }
 
 .repo-name a {
-  color: var(--primary);
+  color: #4f46e5;
   text-decoration: none;
-  transition: color 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .repo-name a:hover {
-  color: var(--secondary);
   text-decoration: underline;
 }
 
-.repo-stars {
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.repo-stars i {
-  color: #f1c40f;
-}
-
+/* Repository Description */
 .repo-description {
-  color: var(--text);
-  font-size: 0.95rem;
-  margin: 0 0 15px;
+  padding: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #4b5563;
+  font-size: 0.9rem;
   line-height: 1.5;
   flex-grow: 1;
+  margin: 0;
 }
 
 .no-desc {
-  color: #888;
+  color: #9ca3af;
   font-style: italic;
 }
 
+/* Repository Footer */
 .repo-footer {
+  padding: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  font-size: 0.85rem;
-  color: #666;
 }
 
 .repo-language {
   display: flex;
   align-items: center;
-  gap: 6px;
+  font-size: 0.85rem;
+  color: #6b7280;
 }
 
 .language-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  margin-right: 6px;
 }
 
 .repo-updated {
+  font-size: 0.85rem;
+  color: #6b7280;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
 }
 
+.repo-updated i {
+  margin-right: 4px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .repo-grid {
     grid-template-columns: 1fr;
-  }
-
-  .repo-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    gap: 20px;
   }
 }
