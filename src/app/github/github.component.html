@@ -1,0 +1,59 @@
+<section class="container">
+  <h2>GitHub Repositories</h2>
+
+  <div class="github-intro card">
+    <div class="github-header">
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="github-logo">
+      <div>
+        <h3>jklancic</h3>
+        <a href="https://github.com/jklancic" target="_blank" class="github-profile-link">
+          <i class="fab fa-github"></i> Visit Profile
+        </a>
+      </div>
+    </div>
+    <p>A collection of my public repositories showcasing various projects and code samples.</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading repositories...</p>
+  </div>
+
+  <div *ngIf="error" class="error-container card">
+    <i class="fas fa-exclamation-circle"></i>
+    <p>{{ error }}</p>
+    <button (click)="fetchRepos()" class="btn">Try Again</button>
+  </div>
+
+  <div *ngIf="!loading && !error && repos.length === 0" class="no-repos card">
+    <i class="fas fa-folder-open"></i>
+    <p>No repositories found.</p>
+  </div>
+
+  <div class="repo-grid" *ngIf="repos.length > 0">
+    <div class="repo-card card" *ngFor="let repo of repos">
+      <div class="repo-header">
+        <h3 class="repo-name">
+          <i class="far fa-folder"></i>
+          <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+        </h3>
+        <span *ngIf="repo.stargazers_count > 0" class="repo-stars">
+          <i class="fas fa-star"></i> {{ repo.stargazers_count }}
+        </span>
+      </div>
+
+      <p class="repo-description" *ngIf="repo.description">{{ repo.description }}</p>
+      <p class="repo-description no-desc" *ngIf="!repo.description"><em>No description provided</em></p>
+
+      <div class="repo-footer">
+        <div class="repo-language" *ngIf="repo.language">
+          <span class="language-dot" [style.backgroundColor]="getLanguageColor(repo.language)"></span>
+          {{ repo.language }}
+        </div>
+        <div class="repo-updated">
+          <i class="far fa-clock"></i> Updated {{ repo.updated_at | date:'MMM d, yyyy' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
