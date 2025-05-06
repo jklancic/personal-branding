@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {NgFor, NgIf} from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import {NgFor, NgIf} from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   mediumPost: { title: string; link: string } | null = null;
   isLoading: boolean = true;
   error: boolean = false;
@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit{
    */
   fetchMediumPosts() {
     const rssUrl = 'https://medium.com/feed/@jernej.klancic';
-    const proxyUrl = 'https://api.allorigins.win/get?url='; // Proxy to bypass CORS
+    // Locally run proxy to bypass CORS
+    const proxyUrl = 'https://klancic.me/cors-proxy?url=';
 
     this.http
       .get<any>(`${proxyUrl}${encodeURIComponent(rssUrl)}`)
