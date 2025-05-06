@@ -15,18 +15,13 @@
     <div class="subtitle">Explore My Latest Thinking</div>
     <p>Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
 
-    <!-- Show loading state -->
-    <p *ngIf="isLoading">Loading latest blog post...</p>
-
-    <!-- Show error state -->
-    <p *ngIf="error">Unable to load the latest blog post. Please try again later.</p>
-
-    <!-- Show the latest blog post title (if available) -->
-    <div *ngIf="!isLoading && !error && mediumPost">
-      <p>
-        <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
-      </p>
-    </div>
+    <p>
+      <a class="latest-post-link"
+         href="https://medium.com/@jernej.klancic/mastering-atomic-commits-the-secret-to-efficient-git-workflows-9ce5f77452d9"
+         target="_blank">
+        Mastering Atomic Commits, The Secret to Efficient Git Workflows
+      </a>
+    </p>
 
     <div class="action-buttons">
       <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
