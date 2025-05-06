@@ -9,4 +9,30 @@
       <a routerLink="/github-repos" class="btn btn-outline">See My Work</a>
     </div>
   </div>
+  <div class="home-content">
+    <h1>Latest Insights</h1>
+
+    <!-- Show loading state -->
+    <p *ngIf="isLoading">Loading latest blog posts...</p>
+
+    <!-- Show error state -->
+    <p *ngIf="error">Unable to load blog posts. Please try again later.</p>
+
+    <!-- Show blog posts -->
+    <div *ngIf="!isLoading && !error" class="latest-posts">
+      <div *ngFor="let post of mediumPosts">
+        <p>
+          <a [href]="post.link" target="_blank">{{ post.title }}</a>
+        </p>
+      </div>
+
+      <div *ngIf="mediumPosts.length === 0">
+        <p>No recent blog posts found.</p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">View All Posts</a>
+    </div>
+  </div>
 </section>
