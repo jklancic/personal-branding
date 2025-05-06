@@ -1,6 +1,6 @@
 <section class="container">
   <div class="home-content">
-    <h1>Jernej Klancic</h1>
+    <h1><i class="fa-solid fa-user"></i> Jernej Klancic</h1>
     <div class="subtitle">Senior Backend Engineer & Engineering Manager</div>
     <p>Hi there! I'm Jernej Klancic, a passionate developer and engineering manager. My love for technology began with a Commodore 64 in childhood and has only grown stronger. Through living in various countries, I've broadened my horizons and applied diverse life experiences to my career in software engineering and management.</p>
     <p>Since August 2023, I've embraced a new challenge as an engineering manager. This role allows me to combine my technical expertise in Java, JavaScript, and C# with business acumen. I use my experience to mentor and guide engineers, focusing on their growth into exceptional professionals. Despite the shift in responsibilities, I maintain my curiosity and continue to code in my free time, keeping my technical skills sharp.</p>
@@ -9,30 +9,27 @@
       <a routerLink="/github-repos" class="btn btn-outline">See My Work</a>
     </div>
   </div>
+
   <div class="home-content">
-    <h1>Latest Insights</h1>
+    <h1><i class="fas fa-lightbulb"></i> What’s New on the Blog</h1>
+    <div class="subtitle">Explore My Latest Thinking</div>
+    <p>Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
 
     <!-- Show loading state -->
-    <p *ngIf="isLoading">Loading latest blog posts...</p>
+    <p *ngIf="isLoading">Loading latest blog post...</p>
 
     <!-- Show error state -->
-    <p *ngIf="error">Unable to load blog posts. Please try again later.</p>
+    <p *ngIf="error">Unable to load the latest blog post. Please try again later.</p>
 
-    <!-- Show blog posts -->
-    <div *ngIf="!isLoading && !error" class="latest-posts">
-      <div *ngFor="let post of mediumPosts">
-        <p>
-          <a [href]="post.link" target="_blank">{{ post.title }}</a>
-        </p>
-      </div>
-
-      <div *ngIf="mediumPosts.length === 0">
-        <p>No recent blog posts found.</p>
-      </div>
+    <!-- Show the latest blog post title (if available) -->
+    <div *ngIf="!isLoading && !error && mediumPost">
+      <p>
+        <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
+      </p>
     </div>
 
     <div class="action-buttons">
-      <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">View All Posts</a>
+      <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
     </div>
   </div>
 </section>

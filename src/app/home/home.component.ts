@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {NgFor, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  mediumPosts: { title: string; link: string }[] = []; // To store the blog posts
-  isLoading: boolean = true; // To show a loading state
-  error: boolean = false; // To show an error state, if any
+  mediumPost: { title: string; link: string } | null = null;
+  isLoading: boolean = true;
+  error: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -33,13 +34,16 @@ export class HomeComponent implements OnInit{
           const parser = new DOMParser();
           const xml = parser.parseFromString(response.contents, 'application/xml');
 
-          const items = Array.from(xml.querySelectorAll('item')); // Get all `<item>` elements
-          this.mediumPosts = items.slice(0, 3).map((item) => ({
-            title: item.querySelector('title')?.textContent ?? 'Untitled',
-            link: item.querySelector('link')?.textContent ?? '#'
-          }));
+          // Get the first `<item>` element
+          const firstItem = xml.querySelector('item');
+          if (firstItem) {
+            this.mediumPost = {
+              title: firstItem.querySelector('title')?.textContent ?? 'Untitled',
+              link: firstItem.querySelector('link')?.textContent ?? '#'
+            };
+          }
 
-          this.isLoading = false;
+          this.isLoading = false; // Disable the loading state
         },
         error: () => {
           console.error('Failed to fetch RSS feed from Medium');
