@@ -21,9 +21,10 @@ export class HomeComponent implements OnInit {
     this.fetchMediumPosts();
   }
 
+  // TODO: Use environment variables for the Medium username and RSS wrapper URL
   fetchMediumPosts() {
     const mediumUsername = 'jernej.klancic';
-    const mediumRssWrapperUrl = `http://localhost:3000/api/feed/${mediumUsername}?size=1`;
+    const mediumRssWrapperUrl = `https://klancic.me/api/feed/${mediumUsername}?size=1`;
 
     this.http.get<any>(mediumRssWrapperUrl).subscribe({
       next: (response) => {
