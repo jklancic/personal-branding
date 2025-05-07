@@ -15,13 +15,18 @@
     <div class="subtitle">Explore My Latest Thinking</div>
     <p>Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
 
-    <p>
-      <a class="latest-post-link"
-         href="https://medium.com/@jernej.klancic/ai-and-stackoverflow-the-changing-landscape-of-developer-support-04c9a2df2067"
-         target="_blank">
-        AI and StackOverflow, The Changing Landscape of Developer Support
-      </a>
-    </p>
+    <!-- Show loading state -->
+    <p *ngIf="isLoading">Loading latest blog post...</p>
+
+    <!-- Show error state -->
+    <p *ngIf="error">Unable to load the latest blog post. Please try again later.</p>
+
+    <!-- Show the latest blog post title (if available) -->
+    <div *ngIf="!isLoading && !error && mediumPost">
+      <p>
+        <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
+      </p>
+    </div>
 
     <div class="action-buttons">
       <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
