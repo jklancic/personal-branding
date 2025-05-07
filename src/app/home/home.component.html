@@ -22,10 +22,18 @@
     <p *ngIf="error">Unable to load the latest blog post. Please try again later.</p>
 
     <!-- Show the latest blog post title (if available) -->
-    <div *ngIf="!isLoading && !error && mediumPost">
+    <div *ngIf="!isLoading && !error && mediumPost" class="latest-blog-post">
       <p>
         <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
       </p>
+      <div class="post-meta">
+        <span class="post-tags">
+          <ng-container *ngFor="let category of mediumPost.categories">
+            <span class="tag">{{ category }}</span>
+          </ng-container>
+        </span>
+        <span class="post-date">{{ mediumPost.pubDate }}</span>
+      </div>
     </div>
 
     <div class="action-buttons">

@@ -4,9 +4,9 @@
   padding: 40px;
   background-color: var(--card-bg);
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  border-bottom: 1px solid #e0e0e0; /* Add a light border-bottom */
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .home-content h1 {
@@ -51,6 +51,7 @@
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .latest-post-link:hover {
   color: #0056a6;
   text-decoration: underline;
@@ -70,7 +71,7 @@
   font-weight: 600;
   text-transform: uppercase;
   color: #fff;
-  background-color: #007acc; /* Primary button color */
+  background-color: #007acc;
   border: none;
   border-radius: 4px;
   text-decoration: none;
@@ -79,12 +80,12 @@
 }
 
 .btn:hover {
-  background-color: #0056a6; /* Darker shade on hover */
-  transform: translateY(-2px); /* Add a lift effect */
+  background-color: #0056a6;
+  transform: translateY(-2px);
 }
 
 .btn:active {
-  transform: translateY(0); /* Normalize the button on click */
+  transform: translateY(0);
 }
 
 .btn-outline {
@@ -93,32 +94,40 @@
   border: 2px solid #007acc;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #007acc; /* Primary button color */
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.latest-blog-post {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-.btn:hover {
-  background-color: #0056a6; /* Darker shade on hover */
-  transform: translateY(-2px); /* Add a lift effect */
+.post-meta {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-.btn:active {
-  transform: translateY(0); /* Normalize the button on click */
+.post-date {
+  font-size: 0.9em;
+  color: #333;
 }
 
-.btn-outline {
-  background-color: transparent;
-  color: #007acc;
-  border: 2px solid #007acc;
+.post-tags {
+  display: flex;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  padding: 3px 8px;
+  margin-right: 5px;
+  font-size: 0.8em;
+  color: #333;
+}
+
+.tag:last-child {
+  margin-right: 0;
 }

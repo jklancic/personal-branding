@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {NgIf} from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgFor],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
-  mediumPost: { title: string; link: string } | null = null;
+  mediumPost: { title: string; link: string, pubDate: string, categories: [] } | null = null;
   isLoading: boolean = true;
   error: boolean = false;
 
@@ -30,7 +30,9 @@ export class HomeComponent implements OnInit {
         if (response.length > 0) {
           this.mediumPost = {
             title: response[0].title ?? 'Untitled',
-            link: response[0].link ?? '#'
+            link: response[0].link ?? '#',
+            pubDate: response[0].pubDate ?? 'Undefined',
+            categories: response[0].categories ?? [],
           };
         }
         this.isLoading = false; // Disable the loading state
