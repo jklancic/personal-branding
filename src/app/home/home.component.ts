@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
    * If an error occurs during the fetch, it sets the error state to true and logs the error to the console.
    */
   fetchMediumPosts() {
-    const mediumUsername = environment.mediumUsername;
-    const mediumRssWrapperUrl = `${environment.mediumRssWrapperUrl}/api/feed/${mediumUsername}?size=1`;
+    const mediumRssWrapperUrl = `${environment.mediumRssWrapperUrl}/api/feed/${environment.mediumUsername}?size=1`;
 
     this.http.get<any>(mediumRssWrapperUrl).subscribe({
       next: (response) => {
