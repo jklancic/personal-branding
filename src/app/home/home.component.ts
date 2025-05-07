@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,10 +22,15 @@ export class HomeComponent implements OnInit {
     this.fetchMediumPosts();
   }
 
-  // TODO: Use environment variables for the Medium username and RSS wrapper URL
+  /**
+   * Fetches the latest Medium posts using the RSS wrapper API.
+   * The API URL is constructed using the Medium username from the environment configuration.
+   * The response is expected to be an array of posts, and the first post's details are stored in the mediumPost property.
+   * If an error occurs during the fetch, it sets the error state to true and logs the error to the console.
+   */
   fetchMediumPosts() {
-    const mediumUsername = 'jernej.klancic';
-    const mediumRssWrapperUrl = `https://klancic.me/api/feed/${mediumUsername}?size=1`;
+    const mediumUsername = environment.mediumUsername;
+    const mediumRssWrapperUrl = `${environment.mediumRssWrapperUrl}/api/feed/${mediumUsername}?size=1`;
 
     this.http.get<any>(mediumRssWrapperUrl).subscribe({
       next: (response) => {
