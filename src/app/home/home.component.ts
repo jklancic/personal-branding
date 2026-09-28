@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -6,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
