@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

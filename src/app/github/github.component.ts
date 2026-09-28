@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 interface GithubRepo {
   name: string;
@@ -14,7 +14,7 @@ interface GithubRepo {
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe],
+  imports: [DatePipe],
   templateUrl: './github.component.html',
   styleUrls: ['./github.component.css']
 })

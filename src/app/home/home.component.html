@@ -16,25 +16,31 @@
     <p>Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
 
     <!-- Show loading state -->
-    <p *ngIf="isLoading">Loading latest blog post...</p>
+    @if (isLoading) {
+      <p>Loading latest blog post...</p>
+    }
 
     <!-- Show error state -->
-    <p *ngIf="error">Unable to load the latest blog post. Please try again later.</p>
+    @if (error) {
+      <p>Unable to load the latest blog post. Please try again later.</p>
+    }
 
     <!-- Show the latest blog post title (if available) -->
-    <div *ngIf="!isLoading && !error && mediumPost" class="latest-blog-post">
-      <p>
-        <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
-      </p>
-      <div class="post-meta">
-        <span class="post-tags">
-          <ng-container *ngFor="let category of mediumPost.categories">
-            <span class="tag">{{ category }}</span>
-          </ng-container>
-        </span>
-        <span class="post-date">{{ mediumPost.pubDate }}</span>
+    @if (!isLoading && !error && mediumPost) {
+      <div class="latest-blog-post">
+        <p>
+          <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
+        </p>
+        <div class="post-meta">
+          <span class="post-tags">
+            @for (category of mediumPost.categories; track category) {
+              <span class="tag">{{ category }}</span>
+            }
+          </span>
+          <span class="post-date">{{ mediumPost.pubDate }}</span>
+        </div>
       </div>
-    </div>
+    }
 
     <div class="action-buttons">
       <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
