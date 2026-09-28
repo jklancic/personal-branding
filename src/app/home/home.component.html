@@ -1,49 +1,48 @@
-<section class="container">
-  <div class="home-content">
-    <h1><i class="fa-solid fa-user"></i> Jernej Klancic</h1>
-    <div class="subtitle">Senior Backend Engineer & Engineering Manager</div>
-    <p>Hi there! I'm Jernej Klancic, a passionate developer and engineering manager. My love for technology began with a Commodore 64 in childhood and has only grown stronger. Through living in various countries, I've broadened my horizons and applied diverse life experiences to my career in software engineering and management.</p>
-    <p>Since August 2023, I've embraced a new challenge as an engineering manager. This role allows me to combine my technical expertise in Java, JavaScript, and C# with business acumen. I use my experience to mentor and guide engineers, focusing on their growth into exceptional professionals. Despite the shift in responsibilities, I maintain my curiosity and continue to code in my free time, keeping my technical skills sharp.</p>
-    <div class="action-buttons">
-      <a routerLink="/about" class="btn">Learn More</a>
-      <a routerLink="/github-repos" class="btn btn-outline">See My Work</a>
-    </div>
+<section class="hero container">
+  <h1>Jernej <span class="accent-text">Klancic</span></h1>
+  <div class="subtitle">Staff Software Engineer</div>
+  <div class="subtitle-secondary">Engineering Manager</div>
+  <p>I'm Jernej Klancic, a <span class="text-highlight">Staff Software Engineer working on AI tooling at SAP LeanIX</span>. My love for technology started with a Commodore 64 as a kid and never let up — it's taken me through software engineering and, for a couple of years, engineering management, while I've lived and worked across Slovenia, Germany, and Canada.</p>
+  <p>Today, I build the infrastructure underneath our <span class="text-highlight">MCP server</span>, going from tool deprecation, progressive tool discovery, and whatever's newest in the MCP ecosystem. This allows other teams to focus entirely on building great tools instead of building the plumbing beneath them. It's not so different from managing engineers: I still care more about making other people effective than about the code itself, and I keep coding daily to stay sharp.</p>
+  <div class="action-buttons">
+    <a routerLink="/about" class="btn">Learn More</a>
+    <a routerLink="/github-repos" class="btn btn-outline">See My Work</a>
   </div>
+</section>
 
-  <div class="home-content">
-    <h1><i class="fas fa-lightbulb"></i> What’s New on the Blog</h1>
-    <div class="subtitle">Explore My Latest Thinking</div>
-    <p>Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
+<section class="blog-section container">
+  <h2><i class="fas fa-lightbulb"></i> What’s New on the Blog</h2>
+  <div class="subtitle">Explore My Latest Thinking</div>
+  <p class="blog-intro-text">Technical insights and leadership advice straight from my blog. Read the latest post to learn something new today!</p>
 
-    <!-- Show loading state -->
-    @if (isLoading) {
-      <p>Loading latest blog post...</p>
-    }
+  <!-- Show loading state -->
+  @if (isLoading) {
+    <p class="blog-status">Loading latest blog post...</p>
+  }
 
-    <!-- Show error state -->
-    @if (error) {
-      <p>Unable to load the latest blog post. Please try again later.</p>
-    }
+  <!-- Show error state -->
+  @if (error) {
+    <p class="blog-status blog-status-error">Unable to load the latest blog post. Please try again later.</p>
+  }
 
-    <!-- Show the latest blog post title (if available) -->
-    @if (!isLoading && !error && mediumPost) {
-      <div class="latest-blog-post">
-        <p>
-          <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
-        </p>
-        <div class="post-meta">
-          <span class="post-tags">
-            @for (category of mediumPost.categories; track category) {
-              <span class="tag">{{ category }}</span>
-            }
-          </span>
-          <span class="post-date">{{ mediumPost.pubDate }}</span>
-        </div>
+  <!-- Show the latest blog post title (if available) -->
+  @if (!isLoading && !error && mediumPost) {
+    <div class="latest-blog-post card">
+      <p>
+        <a class="latest-post-link" [href]="mediumPost.link" target="_blank">{{ mediumPost.title }}</a>
+      </p>
+      <div class="post-meta">
+        <span class="post-tags">
+          @for (category of mediumPost.categories; track category) {
+            <span class="tag">{{ category }}</span>
+          }
+        </span>
+        <span class="post-date">{{ mediumPost.pubDate }}</span>
       </div>
-    }
-
-    <div class="action-buttons">
-      <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
     </div>
+  }
+
+  <div class="action-buttons">
+    <a href="https://medium.com/@jernej.klancic" target="_blank" class="btn">Discover More Insights</a>
   </div>
 </section>

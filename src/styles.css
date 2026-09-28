@@ -1,23 +1,35 @@
 /* Import fonts and Font Awesome */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
 
 :root {
-  --primary: #007acc;
-  --secondary: #607d8b;
-  --text: #333;
-  --bg: #fafafa;
-  --card-bg: #fff;
-  --border: #eaeaea;
+  --primary: #ff7a29;
+  --primary-light: #ffb066;
+  --accent: #e8590c;
+  --yellow: #ffcc33;
+  --secondary: #a89a8c;
+  --text: #f4ede4;
+  --text-muted: #a89a8c;
+  --bg: #0a0806;
+  --bg-elevated: #120d09;
+  --card-bg: #171008;
+  --card-bg-hover: #1f150c;
+  --border: rgba(255, 150, 60, 0.1);
+  --border-strong: rgba(255, 150, 60, 0.22);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .container {
@@ -27,68 +39,102 @@ body {
 }
 
 /* Global classes that can be used in all components */
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   font-weight: 700;
+  color: var(--text);
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 30px;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #666;
+  color: var(--text-muted);
+}
+
+.accent-text {
+  background: linear-gradient(120deg, var(--primary-light), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-highlight {
+  background: linear-gradient(120deg, var(--primary-light), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
 }
 
 .btn {
   display: inline-block;
-  background-color: var(--primary);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #1a0f06;
+  padding: 12px 26px;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
   margin-right: 15px;
   margin-top: 15px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 122, 41, 0.25);
 }
 
 .btn:hover {
-  background-color: var(--secondary);
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 28px rgba(255, 122, 41, 0.35);
 }
 
 .btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text);
+  box-shadow: none;
 }
 
 .btn-outline:hover {
-  background-color: var(--primary);
-  color: white;
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+  background: rgba(255, 122, 41, 0.08);
+  box-shadow: none;
 }
 
 .card {
   background-color: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
   padding: 30px;
   margin-bottom: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-color: var(--border-strong);
+  background-color: var(--card-bg-hover);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
 }
 
 section {
   padding: 60px 0;
+}
+
+a {
+  color: var(--primary-light);
 }

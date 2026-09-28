@@ -1,28 +1,73 @@
-.home-content {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 40px;
-  background-color: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.hero {
+  max-width: 760px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.subtitle-secondary {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 26px;
+}
+
+.hero p {
   text-align: left;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.home-content h1 {
-  margin-top: 0;
-  color: var(--primary);
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: var(--secondary);
-}
-
-.home-content p {
   margin-bottom: 20px;
   line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.hero .action-buttons {
+  margin-top: 20px;
+}
+
+.blog-section {
+  max-width: 760px;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.blog-section h2 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.blog-section h2 i {
+  color: var(--accent);
+}
+
+.blog-intro-text {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.blog-status {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.blog-status-error {
+  color: #f5a3a3;
 }
 
 .action-buttons {
@@ -30,13 +75,16 @@
 }
 
 @media (max-width: 768px) {
-  .home-content {
-    padding: 30px 20px;
-    margin: 20px auto;
+  .hero {
+    padding-top: 30px;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .blog-section {
+    padding-bottom: 40px;
   }
 
   .subtitle {
@@ -45,89 +93,67 @@
 }
 
 .latest-post-link {
-  color: #007acc;
-  font-size: 1.125rem;
-  font-weight: bold;
+  color: var(--text);
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .latest-post-link:hover {
-  color: #0056a6;
-  text-decoration: underline;
-}
-
-.section-divider {
-  border: none;
-  border-top: 2px solid #e0e0e0;
-  margin: 40px auto;
-  width: 80%;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #007acc;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover {
-  background-color: #0056a6;
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: #007acc;
-  border: 2px solid #007acc;
+  color: var(--primary-light);
 }
 
 .latest-blog-post {
-  margin-bottom: 20px;
-  border: 1px solid #e0e0e0;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  position: relative;
+  margin: 0 0 20px;
+  padding: 24px 24px 24px 30px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.latest-blog-post::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+}
+
+.latest-blog-post p {
+  margin: 0;
 }
 
 .post-meta {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .post-date {
   font-size: 0.9em;
-  color: #333;
+  color: var(--text-muted);
 }
 
 .post-tags {
   display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .tag {
-  background-color: #e0e0e0;
-  border-radius: 3px;
-  padding: 3px 8px;
-  margin-right: 5px;
+  background-color: rgba(255, 204, 51, 0.12);
+  border: 1px solid rgba(255, 204, 51, 0.35);
+  border-radius: 4px;
+  padding: 3px 10px;
   font-size: 0.8em;
-  color: #333;
-}
-
-.tag:last-child {
-  margin-right: 0;
+  color: var(--yellow);
 }
