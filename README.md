@@ -69,6 +69,41 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Docker
+
+Build and run the production image locally:
+
+```bash
+docker build -t personal-branding .
+docker run --rm -p 8080:80 personal-branding
+```
+
+Then open `http://localhost:8080/`.
+
+## Deployment
+
+On every push to `main`, [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml) builds the
+production image and publishes it to `ghcr.io/jklancic/personal-branding:latest`.
+
+On the VPS, [docker-compose.yml](docker-compose.yml) runs the app alongside
+[Watchtower](https://containrrr.dev/watchtower/), which polls GHCR every minute and redeploys the container
+automatically when a new image lands — no SSH access from GitHub to the VPS is required.
+
+One-time VPS setup:
+
+```bash
+git clone https://github.com/jklancic/personal-branding.git
+cd personal-branding
+docker compose up -d
+```
+
+Notes:
+
+- The GHCR package defaults to **private** on first publish. Make it public in GitHub → your profile →
+  Packages → `personal-branding` → Package settings, so Watchtower can pull it without credentials.
+- `docker-compose.yml` binds the app to `127.0.0.1:8080`; point your existing reverse proxy (nginx/Caddy/Traefik)
+  at that port for TLS termination — adjust the port mapping if your setup differs.
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,0 +1,15 @@
+services:
+  app:
+    image: ghcr.io/jklancic/personal-branding:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup --label-enable
