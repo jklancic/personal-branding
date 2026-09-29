@@ -10,6 +10,10 @@ services:
   watchtower:
     image: containrrr/watchtower:latest
     restart: unless-stopped
+    environment:
+      # containrrr/watchtower is unmaintained and its bundled Docker client
+      # defaults to an ancient API version that newer Engine releases reject.
+      - DOCKER_API_VERSION=1.44
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 60 --cleanup --label-enable
