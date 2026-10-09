@@ -30,4 +30,5 @@ services:
       - DOCKER_API_VERSION=1.44
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_CONFIG_FILE:-${HOME}/.docker/config.json}:/config.json:ro
     command: --interval 60 --cleanup --label-enable
