@@ -85,8 +85,9 @@ Then open `http://localhost:8080/`.
 On every push to `main`, [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml) builds the
 production image and publishes it to `ghcr.io/jklancic/personal-branding:latest`.
 
-On the VPS, [docker-compose.yml](docker-compose.yml) runs the app alongside
-[Watchtower](https://containrrr.dev/watchtower/), which polls GHCR every minute and redeploys the container
+On the VPS, [docker-compose.yml](docker-compose.yml) runs the app. The shared Watchtower stack in
+`/opt/stacks/watchtower` ([nickfedor/watchtower](https://github.com/nicholas-fedor/watchtower), shared by every
+service on the host) polls GHCR every minute and redeploys the container
 automatically when a new image lands — no SSH access from GitHub to the VPS is required.
 
 One-time VPS setup:

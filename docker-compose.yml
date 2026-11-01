@@ -21,14 +21,5 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  watchtower:
-    image: containrrr/watchtower:latest
-    restart: unless-stopped
-    environment:
-      # containrrr/watchtower is unmaintained and its bundled Docker client
-      # defaults to an ancient API version that newer Engine releases reject.
-      - DOCKER_API_VERSION=1.44
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ${DOCKER_CONFIG_FILE:-${HOME}/.docker/config.json}:/config.json:ro
-    command: --interval 60 --cleanup --label-enable
+# No Watchtower here: the shared stack in /opt/stacks/watchtower on the VPS
+# updates every labeled container on the host.
