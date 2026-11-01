@@ -7,19 +7,6 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  medium-rss-wrapper:
-    image: ghcr.io/jklancic/medium-rss-wrapper:latest
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:3000:3000"
-    environment:
-      - PORT=3000
-      - ALLOWED_ORIGIN=https://klancic.me
-      - MEDIUM_BASE_URL=https://medium.com
-      - API_CACHE_TTL=900
-      - USER_AGENT=medium-rss-wrapper/1.0 (klancic.me; klancic@hotmail.com)
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
-
+# medium-rss-wrapper runs from its own repository's compose file.
 # No Watchtower here: the shared stack in /opt/stacks/watchtower on the VPS
 # updates every labeled container on the host.
